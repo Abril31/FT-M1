@@ -21,13 +21,7 @@ function counter() {
     return contador;
   }
 }
-const nuevoContador =  counter();
-nuevoContador();
-nuevoContador();
 
-const otroContador = counter();
-otroContador();
-otroContador();
 
 
 /* Ejercicio 2
@@ -53,8 +47,11 @@ function cacheFunction(cb) {
    return function (arg){
     if(cache.hasOwnProperty(arg)){
       return cache.arg;
+    }else{
+      
+      return cache[arg] = cb(arg)
     }
- }
+ };
 }
 
 //----------------------------------------
@@ -80,8 +77,8 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor = getNombre.bind();
-let getNombreAlumno = getNombre.bind();
+let getNombreInstructor = getNombre.bind(instructor);
+let getNombreAlumno = getNombre.bind(alumno);
 
 /*
   Ejercicio 4
@@ -92,9 +89,9 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
     return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind();
-let textoGuiones = crearCadena.bind();
-let textoUnderscore = crearCadena.bind();
+let textoAsteriscos = crearCadena.bind(null, "*", "*" );
+let textoGuiones = crearCadena.bind(null,"-", "-" );
+let textoUnderscore = crearCadena.bind(null, "_","_");
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
